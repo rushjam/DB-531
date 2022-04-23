@@ -93,7 +93,8 @@ Project:	Deepor
 /****************************/
 /** Imports **/
 /****************************/
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons|Roboto:400,500,700);
+/* @import url(https://fonts.googleapis.com/icon?family=Material+Icons|Roboto:400,500,700); */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@200;400;600;800&display=swap');
 @import url(../../vendors/bootstrap/dist/css/bootstrap.min.css);
 @import url(font-awesome.min.css);
 @import url(ionicons.min.css);
@@ -136,8 +137,10 @@ body {
   color: #5e7d8a;
   font-size: 1rem;
   font-style: normal;
-  font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: 'DM Sans', sans-serif;
+font-family: 'Manrope', sans-serif;
   line-height: 1.5;
   background: #acb0b1;
   overflow-x: hidden; }
@@ -20666,3 +20669,170 @@ table.dataTable {
   /* IE11 */ }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* new changes Rushik */
+
+.new-br {
+  border-radius: 0.75rem !important;
+}
+.new-b {
+  border: 1px solid black !important;
+}
+
+
+
+.heading-custom {
+  color: white !important;
+	-webkit-text-stroke-width: 2px !important;
+    -webkit-text-stroke-color: #6e00ff !important;
+}
+
+.cw {
+  /* width: 300px !important; */
+  top: 190px !important;
+  left: 30px !important;
+  height: 72vh !important;
+  border-radius: 0.75rem !important;
+}
+.sidebar-bg {
+  align-items: center;
+}
+.sidebar-bg > li{
+padding-top: 10px;
+padding-bottom: 10px;
+margin-top: 4px;
+margin-bottom: 4px;
+width: 200px !important;
+} 
+/* .sidebar-bg > li {
+  padding: 10px;
+} */
+.sidebar-bg > li:hover {
+  background-color: #6e00ff !important;
+  border-radius: 0.75rem !important;
+
+  
+}
+.sidebar-bg > li a {
+  color: black !important;
+}
+.sidebar-bg > li:hover a {
+  color: white !important;
+}
+
+/* navbar */
+
+.custom-nav {
+  box-shadow: none !important;
+}
+
+.hm-tital {
+  top: -150px;
+  background: #6e00ff;
+  width: 240px;
+  border-radius: 0.75rem;
+}
+
+.hm-tital h1 {
+  color: white
+}
+
+body {
+  background: #f5f7fb !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: gray !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: gray !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: gray !important;
+}
+input, select, textarea{
+  color: gray !important;
+}
+
+textarea:focus, input:focus, select:focus {
+  color: black !important;
+  border-color: #6e00ff !important;
+}
+
+.input-custom, input, select {
+  border-radius: 0.75rem !important;
+  border: 2.5px solid rgb(139 139 139 / 45%) !important;
+}
+ .mbc label {
+  margin: 0 !important;
+ }
+ .form-row {
+   margin-bottom: 20px !important;
+ }
+
+ input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) !important;
+}
+
+button {
+  border-radius: 0.75rem !important;  
+  background-color: #6e00ff !important;
+  outline: none !important;
+  border: none !important;
+  width: 130px;
+  height: 46px;
+  font-weight: 900 !important;
+}
+button:hover {
+  background-color: #6e00ffde !important;
+}
+
+/* side icons */
+.sidebar-icon {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+.sidebar1 {
+  background: url('../img/sidebar1.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.sidebar2 {
+  background: url('../img/sidebar2.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sidebar3 {
+  background: url('../img/sidebar3.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar4 {
+  background: url('../img/sidebar4.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar5 {
+  background: url('../img/sidebar5.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar6 {
+  background: url('../img/sidebar6.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

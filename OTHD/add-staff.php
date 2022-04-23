@@ -42,7 +42,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
         <!-- HK Wrapper -->
-        <div class="hk-wrapper hk-vertical-nav">
+        <div class="hk-wrapper hk-vertical-nav ml-[300px]">
 
             <!-- Top Navbar -->
             <?php include_once('includes/navbar.php');
@@ -57,7 +57,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
             <!-- Main Content -->
-            <div class="hk-pg-wrapper">
+            <div class="hk-pg-wrapper ml-0">
                 <!-- Breadcrumb -->
                 <nav class="hk-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-light bg-transparent">

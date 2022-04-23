@@ -1,9 +1,5 @@
-<nav class="navbar navbar-expand-xl navbar-light fixed-top hk-navbar">
-    <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-menu"></i></a>
-    <a class="navbar-brand" href="dashboard.php">On the Hoof Dairy
-    </a>
+<nav class="navbar navbar-expand-xl  fixed-top hk-navbar h-[90px] custom-nav left-[300px]">
     <ul class="navbar-nav hk-navbar-content">
-
         <li class="nav-item dropdown dropdown-authentication">
             <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media">
@@ -30,7 +26,6 @@
                 <div class="dropdown-divider"></div>
                 <div class="sub-dropdown-menu show-on-hover">
                     <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
-
                 </div>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>

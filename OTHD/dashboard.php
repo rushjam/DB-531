@@ -22,7 +22,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
     <body>
         <!-- HK Wrapper -->
-        <div class="hk-wrapper hk-vertical-nav">
+        <div class="hk-wrapper hk-vertical-nav ml-[300px]">
 
             <?php include_once('includes/navbar.php');
             include_once('includes/sidebar.php');
@@ -30,7 +30,7 @@ if (strlen($_SESSION['aid'] == 0)) {
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
             <!-- /Vertical Nav -->
             <!-- Main Content -->
-            <div class="hk-pg-wrapper">
+            <div class="hk-pg-wrapper ml-0">
                 <!-- Container -->
                 <div class="container-fluid mt-xl-50 mt-sm-30 mt-15">
                     <!-- Row -->

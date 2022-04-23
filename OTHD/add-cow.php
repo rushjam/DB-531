@@ -47,7 +47,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
         <!-- HK Wrapper -->
-        <div class="hk-wrapper hk-vertical-nav">
+        <div class="hk-wrapper hk-vertical-nav ml-[300px]">
 
             <!-- Top Navbar -->
             <?php include_once('includes/navbar.php');
@@ -62,7 +62,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
             <!-- Main Content -->
-            <div class="hk-pg-wrapper">
+            <div class="hk-pg-wrapper ml-0">
                 <!-- Breadcrumb -->
                 <nav class="hk-breadcrumb" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-light bg-transparent">
@@ -92,24 +92,37 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Cow number</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="cow number" name="category" required>
+                                                    <input type="text" class="form-control input-custom " id="validationCustom03" placeholder="Enter the cow's number" name="category" required>
                                                     <div class="invalid-feedback">Cow Number</div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="col-md-6 mb-10">
+                                                <div class="col-md-6 mb-10 ">
                                                     <label for="validationCustom03">Gender</label>
-                                                    <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Male" required><label for="Male">Male</label>
-                                                    <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Female" required><label for="Female">Female</label>
-                                                    <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Other" required><label for="Other">Other</label>
+                                                    <div class="overflow-hidden box-border m-0 flex mbc">
+                                                        <div class="flex items-center mr-12">
+                                                            <input type="radio" class="form-control w-[22px] mr-4 accent-[#6e00ff]" id="validationCustom03" name="gender" value="Male" required>
+                                                            <label for="Male mb-0">Male</label>
+                                                        </div>
+                                                        <div class="flex items-center  mr-12">
+
+                                                            <input type="radio" class="form-control  w-[22px] mr-4 accent-[#6e00ff]" id="validationCustom03" name="gender" value="Female" required>
+                                                            <label for="Female mb-0">Female</label>
+                                                        </div>
+                                                        <div class="flex items-center mr-12">
+
+                                                            <input type="radio" class="form-control  w-[22px] mr-4 accent-[#6e00ff]" id="validationCustom03" name="gender" value="Other" required>
+                                                            <label for="Other mb-0">Other</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Cow Type</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Cow type" name="type" required>
+                                                    <input type="text" class="form-control input-custom" id="validationCustom03" placeholder="Enter the Cow's type" name="type" required>
                                                     <div class="invalid-feedback">Please provide a valid cow type.</div>
                                                 </div>
                                             </div>
@@ -117,7 +130,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Date of Birth</label>
-                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="dob" name="dob" required>
+                                                    <input type="date" class="form-control input-custom" id="validationCustom03" placeholder="Enter the Cow's DOB" name="dob" required>
                                                     <div class="invalid-feedback">Please provide a valid Date of birth.</div>
                                                 </div>
                                             </div>
@@ -125,7 +138,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Date Acquired</label>
-                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="dacq" name="dtacq" required>
+                                                    <input type="date" class="form-control input-custom" id="validationCustom03" placeholder=" Enter the Cow's dacq" name="dtacq" required>
                                                     <div class="invalid-feedback">Please provide a valid Date acquired.</div>
                                                 </div>
                                             </div>
@@ -133,7 +146,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Cow Status</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="status" name="status" required>
+                                                    <input type="text" class="form-control input-custom" id="validationCustom03" placeholder="Status" name="status" required>
                                                     <div class="invalid-feedback">Please provide valid Cow Status .</div>
                                                 </div>
                                             </div>
@@ -141,7 +154,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Date Removed</label>
-                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="drmd" name="dtrmd" required>
+                                                    <input type="date" class="form-control input-custom" id="validationCustom03" placeholder="drmd" name="dtrmd" required>
                                                     <div class="invalid-feedback">Please provide a valid Date removed.</div>
                                                 </div>
                                             </div>
@@ -149,7 +162,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Cause</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="cause" name="cause" required>
+                                                    <input type="text" class="form-control input-custom" id="validationCustom03" placeholder="Enter the cause" name="cause" required>
                                                     <div class="invalid-feedback">Please provide a valid cause.</div>
                                                 </div>
                                             </div>

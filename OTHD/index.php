@@ -39,18 +39,44 @@ if (isset($_POST['login'])) {
 
 
     <!-- HK Wrapper -->
-    <div class="hk-wrapper">
+    <div class="hk-wrapper ">
 
         <!-- Main Content -->
-        <div class="hk-pg-wrapper hk-auth-wrapper">
-            <header class="d-flex justify-content-between align-items-center">
-                <a class="d-flex auth-brand align-items-center" href="#">
-                    <span class="text-white font-30">On The Hoof Dairy</span>
+        <div class="hk-pg-wrapper hk-auth-wrapper bg-slate-800">
+            <!-- <header class="d-flex justify-content-between align-items-center z-0">
+                <a class="d-flex auth-brand align-items-center text-black" href="#">
+                    <span class="font-black  text‑transparent 	border-solid heading-custom text-10xl">On The Hoof Dairy</span>
                 </a>
-
-            </header>
-            <div class="container-fluid">
+            </header> -->
+            <div class="container-fluid z-50">
                 <div class="row">
+                <div class="col-xl-7 pa-0">
+                        <div class="auth-form-wrap py-xl-0 py-50">
+                            <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
+                                <form method="post">
+                                    <h1 class="font-30 font-black mb-20 text-black">Login</h1>
+                                    <p class="font-5 font-100 mb-20">See your support and get consulting support!</p>
+
+                                    <div class="form-group">
+                                        <input class="form-control new-b new-br border-solid h-14 font-bold" placeholder="Username" type="text" name="username" required="true">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="border-solid form-control new-b new-br h-14 font-bold" placeholder="Password" type="password" name="password" required="true">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn new-br btn-block bg-[#6e00ff] h-14 text-white font-bold" type="submit" name="login">Login</button>
+                                    <p class="font-14 text-center mt-15 text-black font-black">Having trouble logging in?</p>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-xl-5 pa-0">
                         <div id="owl_demo_1" class="owl-carousel dots-on-item owl-theme">
                             <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(dist/img/banner2.png);">
@@ -71,32 +97,7 @@ if (isset($_POST['login'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-7 pa-0">
-                        <div class="auth-form-wrap py-xl-0 py-50">
-                            <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
-                                <form method="post">
-                                    <h1 class="display-4 mb-10">Welcome Back :)</h1>
-
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Username" type="text" name="username" required="true">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input class="form-control" placeholder="Password" type="password" name="password" required="true">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button class="btn btn-warning btn-block" type="submit" name="login">Login</button>
-                                    <p class="font-14 text-center mt-15">Having trouble logging in?</p>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
