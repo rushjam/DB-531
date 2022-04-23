@@ -84,6 +84,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         <th>Cow Number</th>
                                                         <th>VaccineDate</th>
                                                         <th>Remarks</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -99,8 +100,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             <td><?php echo $row['VaccineDate']; ?></td>
                                                             <td><?php echo $row['Remarks']; ?></td>
                                                             <td>
-                                                                <a href="edit-vaccine.php?pid=<?php echo base64_encode($row['id'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
-                                                                <a href="manage-vaccine.php?id=<?= strip_tags($row['id']) ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
+                                                                <a href="edit-vaccine.php?id=<?php print $row[0]; ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
+                                                                <a href="manage-vaccine.php?id=<?php print $row[0]; ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
                                                             </td>
                                                         </tr>
                                                     <?php

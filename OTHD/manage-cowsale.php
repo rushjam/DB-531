@@ -7,8 +7,8 @@ if (strlen($_SESSION['aid'] == 0)) {
 } else {
     // Code for deletion   
     if (isset($_GET['del'])) {
-        $cmpid = substr(base64_decode($_GET['del']), 0, -5);
-        $query = mysqli_query($con, "delete from tblcwsale where id='$cmpid'");
+        
+        $query = mysqli_query($con, "delete from tblcwsale where id=".$_REQUEST['id']);
         echo "<script>alert('Cow Sales record deleted.');</script>";
         echo "<script>window.location.href='manage-cowsale.php'</script>";
     }
@@ -83,7 +83,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         <th>Customer Contact</th>
                                                         <th>Customer Email</th>
                                                         <th>Remarks</th>
-
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -104,8 +104,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             <td><?php echo $row['Email']; ?></td>
                                                             <td><?php echo $row['Remarks']; ?></td>
                                                             <td>
-                                                                <a href="edit-cowsale.php?pid=<?php echo base64_encode($row['id'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
-                                                                <a href="manage-cowsale.php?del=<?php echo base64_encode($row['id'] . $rno); ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
+                                                                <a href="edit-cowsale.php?pid=<?php echo ($row['id']); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
+                                                                <a href="manage-cowsale.php?del=<?php echo ($row['id']); ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
                                                             </td>
                                                         </tr>
                                                     <?php

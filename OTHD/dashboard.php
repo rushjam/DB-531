@@ -86,28 +86,28 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 </div>
 
                                 <?php
-                                $sql = mysqli_query($con, "select id from tblproducts");
-                                $listedproduct = mysqli_num_rows($sql);
+                                $query = mysqli_query($con, "select sum(Liter) as tt from tblmsale");
+                                $row = mysqli_fetch_array($query);
                                 ?>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="card card-sm">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between mb-5">
                                                 <div>
-                                                    <span class="d-block font-15 text-dark font-weight-500">Products</span>
+                                                    <span class="d-block font-15 text-dark font-weight-500">Total Milk Sales</span>
                                                 </div>
                                                 <div>
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <span class="d-block display-4 text-dark mb-5"><?php echo $listedproduct; ?></span>
-                                                <small class="d-block">Listed Products</small>
+                                                <span class="d-block display-4 text-dark mb-5"><?php print number_format($row['tt'], 2); ?> Gallon</span>
+                                                <small class="d-block">Total Milk sales till date</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <?php
-                                $query = mysqli_query($con, "select sum(tblorders.Quantity*tblproducts.ProductPrice) as tt  from tblorders join tblproducts on tblproducts.id=tblorders.ProductId ");
+                                $query = mysqli_query($con, "select sum(Liter * priceperpound) as tt from tblmsale");
                                 $row = mysqli_fetch_array($query);
                                 ?>
                                 <div class="col-lg-3 col-md-6">
@@ -121,7 +121,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($row['tt'], 2); ?></span>
+                                                <span class="d-block display-4 text-dark mb-5"><?php print number_format($row['tt'], 2); ?> $</span>
                                                 <small class="d-block">Total sales till date</small>
                                             </div>
                                         </div>
@@ -129,8 +129,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 </div>
 
                                 <?php
-                                $qury = mysqli_query($con, "select sum(tblorders.Quantity*tblproducts.ProductPrice) as tt  from tblorders join tblproducts on tblproducts.id=tblorders.ProductId where date(tblorders.InvoiceGenDate)>=(DATE(NOW()) - INTERVAL 7 DAY)");
-                                $row = mysqli_fetch_array($qury);
+                                $query = mysqli_query($con, "select sum(Liter * priceperpound) as tt from tblmsale where Date > now() - INTERVAL 7 day;");
+                                $row = mysqli_fetch_array($query);
                                 ?>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="card card-sm">
@@ -143,7 +143,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($row['tt'], 2); ?></span>
+                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($row['tt'], 2); ?> $</span>
                                                 <small class="d-block">Last 7 Days Total Sales</small>
                                             </div>
                                         </div>
@@ -151,30 +151,31 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 </div>
 
                                 <?php
-                                $qurys = mysqli_query($con, "select sum(tblorders.Quantity*tblproducts.ProductPrice) as tt  from tblorders join tblproducts on tblproducts.id=tblorders.ProductId where date(tblorders.InvoiceGenDate)=CURDATE()-1");
-                                $rw = mysqli_fetch_array($qurys);
+                                $query = mysqli_query($con, "select sum(Liter) as tt from tblmsale where Date > now() - INTERVAL 7 day;");
+                                $row = mysqli_fetch_array($query);
                                 ?>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="card card-sm">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between mb-5">
                                                 <div>
-                                                    <span class="d-block font-15 text-dark font-weight-500">Yesterday Sales</span>
+                                                    <span class="d-block font-15 text-dark font-weight-500">Last 7 Days Sales</span>
                                                 </div>
                                                 <div>
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($rw['tt'], 2); ?></span>
-                                                <small class="d-block">Yesterday Total Sales</small>
+                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($row['tt'], 2); ?> Gallon</span>
+                                                <small class="d-block">Last 7 Days Total Sales</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <?php
-                                $quryss = mysqli_query($con, "select sum(tblorders.Quantity*tblproducts.ProductPrice) as tt  from tblorders join tblproducts on tblproducts.id=tblorders.ProductId where date(tblorders.InvoiceGenDate)=CURDATE()");
-                                $rws = mysqli_fetch_array($quryss);
+                                $date = date("Y-m-d");
+                                $query = mysqli_query($con, "select sum(Liter * priceperpound) as tt from tblmsale where Date = '$date'");
+                                $row = mysqli_fetch_array($query);
                                 ?>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="card card-sm">
@@ -187,16 +188,22 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($rws['tt'], 2); ?></span>
+                                                <span class="d-block display-4 text-dark mb-5"><?php echo number_format($row['tt'], 2); ?> $</span>
                                                 <small class="d-block">Today's Total Sales</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
+                                <div class="col-md-6">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <canvas id="myChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            
                             </div>
-
                         </div>
                         <!-- /Container -->
 
@@ -229,6 +236,65 @@ if (strlen($_SESSION['aid'] == 0)) {
                 <script src="vendors/apexcharts/dist/apexcharts.min.js"></script>
                 <script src="dist/js/irregular-data-series.js"></script>
                 <script src="dist/js/init.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+
+$(document).ready(function(){
+  $.ajax({
+    url: "chart/data.php",
+    method: "GET",
+    success: function(data) {
+      console.log(data);
+      var player = [];
+      var score = [];
+
+      for(var i in data) {
+        player.push(data[i].Date);
+        score.push(data[i].Liter);
+      }
+
+      const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: player,
+        datasets: [{
+            label: '# of Milk Sale',
+            data: score,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+    }
+    })
+})
+
+
+</script>
 
     </body>
 

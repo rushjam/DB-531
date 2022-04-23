@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
         $_SESSION['aid'] = $ret['ID'];
         header('location:add-cow.php');
     } else {
-        echo "<script>alert('Invalid details. Please try again.');</script>";
+        echo "<script>alert('Incorrect Username or Password. Please try again.');</script>";
         echo "<script>window.location.href='add-cow.php'</script>";
     }
 }

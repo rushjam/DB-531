@@ -6,16 +6,30 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:logout.php');
 } else {
     // Add Category Code
-    if (isset($_POST['update'])) {
-        $cid = substr(base64_decode($_GET['pid']), 0, -5);
-        //Getting Post Values
-        $catname = $_POST['category'];
-        $dob = $_POST['dob'];
-        $type = $_POST['remarks'];
-        $query = mysqli_query($con, "update tblvaccine set CowNumber='$catname',VaccineDate='$dob',Remarks='$type' where id='$cid'");
-        echo "<script>alert('Vaccine updated successfully.');</script>";
-        echo "<script>window.location.href='manage-vaccine.php'</script>";
-    }
+    if(isset($_POST['update'])){
+		
+        $update = "UPDATE `tblvaccine` SET `CowNumber`='".$_POST['CowNumber']."',`VaccineDate`='".$_POST['VaccineDate']."',`Remarks`='".$_POST['Remarks']."' WHERE `id`='".$_REQUEST['id']."'";
+
+		mysqli_query($con, $update);
+		
+		$msg="Sucessfully Updated a Vaccine Record !!";
+				
+		echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-vaccine.php';</script>";
+	
+		mysqli_close($con);
+	}
+
+    if($_REQUEST['id']){
+
+		$datashow="SELECT * FROM `tblvaccine` WHERE id=".$_REQUEST['id'];
+
+		$resrow=mysqli_query($con,$datashow);
+
+		$data=mysqli_fetch_array($resrow);		
+
+	}
+
+
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -70,41 +84,29 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <div class="row">
                                     <div class="col-sm">
                                         <form class="needs-validation" method="post" novalidate>
-                                            <?php
-                                            $cid = substr(base64_decode($_GET['pid']), 0, -5);
-                                            $ret = mysqli_query($con, "select * from tblvaccine where ID='$cid'");
-                                            $cnt = 1;
-                                            while ($row = mysqli_fetch_array($ret)) {
-                                            ?>
+                                        <div class="form-row">
+                                                    <div class="col-md-6 mb-10">
+                                                        <label for="validationCustom03">Cow Number</label>
+                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php print $data['CowNumber']; ?>" name="CowNumber" required>
+                                                        <div class="invalid-feedback">Please provide a cow number.</div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Date</label>
-                                                        <input type="date" class="form-control" id="validationCustom03" value="<?php echo $row['Date']; ?>" name="date" required>
+                                                        <input type="date" class="form-control" id="validationCustom03" value="<?php print $data['VaccineDate']; ?>" name="VaccineDate" required>
                                                         <div class="invalid-feedback">Please provide a valid date.</div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
-                                                        <label for="validationCustom03">Cow Number</label>
-                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['Cow Number']; ?>" name="cownumber" required>
-                                                        <div class="invalid-feedback">Please provide a cow number.</div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Remarks</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['Remarks']; ?>" name="remarks" required>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php print $data['Remarks']; ?>" name="Remarks" required>
                                                         <div class="invalid-feedback">Please provide a valid number.</div>
                                                     </div>
                                                 </div>
-
-
-
-                                            <?php } ?>
                                             <button class="btn btn-primary" type="submit" name="update">Update</button>
                                         </form>
                                     </div>

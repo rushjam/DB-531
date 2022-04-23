@@ -6,11 +6,17 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:logout.php');
 } else {
     // Code for deletion   
-    if (isset($_GET['del'])) {
-        $cmpid = substr(base64_decode($_GET['del']), 0, -5);
-        $query = mysqli_query($con, "delete from tblstaff where id='$cmpid'");
-        echo "<script>alert('Staff record deleted.');</script>";
-        echo "<script>window.location.href='manage-staff.php'</script>";
+    if(isset($_REQUEST['id'])) {
+
+        $query1 = "DELETE FROM `tblstaff` WHERE id=".$_REQUEST['id'];
+
+        mysqli_query($con, $query1);
+		
+		$msg="Staff Record Successfully Deleted !!";
+				
+		echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-staff.php';</script>";
+	
+		mysqli_close($con);
     }
 
 ?>
@@ -79,10 +85,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         <th>Email</th>
                                                         <th>Mobile No</th>
                                                         <th>Designation</th>
-
-                                                        <th>Password</th>
-
-
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -98,11 +101,9 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             <td><?php echo $row['Emailid']; ?></td>
                                                             <td><?php echo $row['Mobileno']; ?></td>
                                                             <td><?php echo $row['Designation']; ?></td>
-
-                                                            <td><?php echo $row['Password']; ?></td>
                                                             <td>
-                                                                <a href="edit-staff.php?pid=<?php echo base64_encode($row['id'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
-                                                                <a href="manage-staff.php?del=<?php echo base64_encode($row['id'] . $rno); ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
+                                                                <a href="edit-staff.php?id=<?php echo $row['id']; ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
+                                                                <a href="manage-staff.php?id=<?php echo $row['id']; ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
                                                             </td>
                                                         </tr>
                                                     <?php

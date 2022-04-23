@@ -91,6 +91,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         <th>Status</th>
                                                         <th>Date Removed </th>
                                                         <th>Cause </th>
+                                                        <th>Action </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

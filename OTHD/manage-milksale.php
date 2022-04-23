@@ -71,17 +71,16 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="table-wrap">
-                                            <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                        <table id="datable_1" class="table table-hover w-100 display pb-30">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Collection ID</th>
                                                         <th>Cow Number</th>
                                                         <th>Date</th>
-                                                        <th>Liter</th>
-                                                        <th>Price Per Liter</th>
-                                                        <th>Total</th>
-
+                                                        <th>Quantity (Pound)</th>
+                                                        <th>Price Pound (Dollar)</th>
+                                                        <th>Total Price (Dollar)</th>
+                                                        <th>Actions</th>
 
                                                     </tr>
                                                 </thead>
@@ -94,15 +93,15 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $cnt; ?></td>
-                                                            <td><?php echo $row['CollectionID']; ?></td>
-                                                            <td><?php echo $row['Name']; ?></td>
+
+                                                            <td><?php echo $row['CowNumber']; ?></td>
                                                             <td><?php echo $row['Date']; ?></td>
                                                             <td><?php echo $row['Liter']; ?></td>
-                                                            <td><?php echo $row['Priceperliter']; ?></td>
-                                                            <td><?php echo $row['Total']; ?></td>
+                                                            <td><?php echo $row['priceperpound']; ?></td>
+                                                            <td><?php echo ($row['Liter'] * $row['priceperpound']);?></td>
                                                             <td>
-                                                                <a href="edit-milksale.php?pid=<?php echo base64_encode($row['id'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
-                                                                <a href="manage-milksale.php?del=<?php echo base64_encode($row['id'] . $rno); ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
+                                                                <a href="edit-milksale.php?id=<?php echo $row['id']; ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
+                                                                <a href="manage-milksale.php?del=<?php echo $row['id']; ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
                                                             </td>
                                                         </tr>
                                                     <?php

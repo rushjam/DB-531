@@ -18,8 +18,8 @@ if (strlen($_SESSION['aid'] == 0)) {
 
         $query = mysqli_query($con, "insert into tblfeed(Date,CowNumber,Remarks,FoodItem,Quantity,FeedingTime) values('$date','$catname','$type','$fooditem','$quantity','$feedingtime')");
         if ($query) {
-            echo "<script>alert('Info added successfully.');</script>";
-            echo "<script>window.location.href='add-feed.php'</script>";
+            echo "<script>alert('Cow Feed Record Added successfully.');</script>";
+            echo "<script>window.location.href='manage-feed.php'</script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again.');</script>";
             echo "<script>window.location.href='add-feed.php'</script>";
@@ -89,14 +89,6 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Date</label>
-                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="Date" name="date" required>
-                                                    <div class="invalid-feedback">Please provide correct date.</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Cow Number</label>
                                                     <?php 
                                                         $query ="SELECT Cownumber FROM tblcow";
@@ -112,6 +104,14 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         <option value="<?php echo $option['Cownumber']; ?>"><?php echo $option['Cownumber']; ?></option>
                                                         <?php } ?>
                                                     </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-10">
+                                                    <label for="validationCustom03">Date</label>
+                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="Date" name="date" required>
+                                                    <div class="invalid-feedback">Please provide correct date.</div>
                                                 </div>
                                             </div>
 

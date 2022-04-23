@@ -14,7 +14,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
         $query = mysqli_query($con, "insert into tblvaccine(CowNumber,VaccineDate,Remarks) values('$catname','$dob','$type')");
         if ($query) {
-            echo "<script>alert('Info added successfully.');</script>";
+            echo "<script>alert('Vaaccine Record Added successfully.');</script>";
             echo "<script>window.location.href='manage-vaccine.php'</script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again.');</script>";

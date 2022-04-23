@@ -21,7 +21,7 @@ if (strlen($_SESSION['aid'] == 0)) {
         $query = mysqli_query($con, "insert into tblcow(CowNumber,Gender,Breed,DateofBirth,DateAcquired,Status,DateRemoved,Cause) values('$catname','$gender','$type','$dob','$dtacq','$status','$dtrmd','$cause')");
         if ($query) {
             echo "<script>alert('Cow Record added successfully.');</script>";
-            echo "<script>window.location.href='add-cow.php'</script>";
+            echo "<script>window.location.href='manage-cow.php'</script>";
         } else {
             echo "<script>alert('Cow Number already exist.');</script>";
             echo "<script>window.location.href='add-cow.php'</script>";
