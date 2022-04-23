@@ -8,17 +8,15 @@ if (strlen($_SESSION['aid'] == 0)) {
     // Add Category Code
     if (isset($_POST['submit'])) {
         //Getting Post Values
-        $cidn = $_POST['cidn'];
-        $cownumber = $_POST['cownumber'];
-        $date = $_POST['date'];
-        $pound = $_POST['pound'];
+        $cownumber = $_POST['CowNumber'];
+        $date = $_POST['Date'];
+        $pound = $_POST['Liter'];
         $priceperpound = $_POST['priceperpound'];
-        $total = $_POST['total'];
 
-        $query = mysqli_query($con, "insert into tblmsale(CollectionID,Name,Date,Liter,Priceperliter,Total) values('$cidn','$cownumber','$date','$pound','$priceperpound','$total')");
-        if ($query) {
-            echo "<script>alert('Info added successfully.');</script>";
-            echo "<script>window.location.href='add-milksale.php'</script>";
+        $query = mysqli_query($con, "insert into tblmsale(CowNumber,Date,Liter,priceperpound) values('$cownumber','$date','$pound','$priceperpound')");
+        if ($query){
+            echo "<script>alert('Milk Sale Record added successfully.');</script>";
+            echo "<script>window.location.href='manage-milksale.php'</script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again.');</script>";
             echo "<script>window.location.href='add-milksale.php'</script>";
@@ -86,52 +84,51 @@ if (strlen($_SESSION['aid'] == 0)) {
                                     <div class="col-sm">
                                         <form class="needs-validation" method="post" novalidate>
 
-                                            <div class="form-row">
+                                        <div class="form-row">
                                                 <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">CollectionID</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="CollectionID" name="cidn" required>
-                                                    <div class="invalid-feedback">Please provide a collection id.</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Cow Number</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Cow Number" name="cownumber" required>
-                                                    <div class="invalid-feedback">Please provide a correct number.</div>
+                                                    <label for="validationCustom03">Cow number</label>
+                                                    <?php 
+                                                        $query ="SELECT Cownumber FROM tblcow";
+                                                        $result = $con->query($query);
+                                                        if($result->num_rows> 0){
+                                                            $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                                        }
+                                                    ?>
+                                                    <select name="CowNumber" class="form-control">
+                                                    <?php 
+                                                        foreach ($options as $option) {
+                                                    ?>
+                                                        <option value="<?php echo $option['Cownumber']; ?>"><?php echo $option['Cownumber']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                    <div class="invalid-feedback">Cow Number</div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Date</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Date" name="date" required>
+                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="Date" name="Date" required>
                                                     <div class="invalid-feedback">Please provide correct date of birth.</div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Liter</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Pound" name="pound" required>
+                                                    <label for="validationCustom03">Quantity</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Pound" name="Liter" required>
                                                     <div class="invalid-feedback">Please provide a valid number.</div>
                                                 </div>
                                             </div>
-
+                                            
+                                            
                                             <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Price per liter</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Price per pound" name="priceperpound" required>
-                                                    <div class="invalid-feedback">Please provide a valid price.</div>
+                                                    <div class="col-md-6 mb-10">
+                                                        <label for="validationCustom03">Price per pound</label>
+                                                        <input type="text" class="form-control" id="validationCustom03" name="priceperpound" required>
+                                                        <div class="invalid-feedback">Please provide a valid price.</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Total</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Total" name="total" required>
-                                                    <div class="invalid-feedback">Please provide a valid total.</div>
-                                                </div>
-                                            </div>
 
 
 

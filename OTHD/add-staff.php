@@ -8,15 +8,15 @@ if (strlen($_SESSION['aid'] == 0)) {
     // Add Category Code
     if (isset($_POST['submit'])) {
         //Getting Post Values
-        $name = $_POST['name'];
-        $email = $_POST['emailid'];
-        $mobile = $_POST['mobile'];
-        $designation = $_POST['designation'];
+        $name = $_POST['Name'];
+        $email = $_POST['Emailid'];
+        $mobile = $_POST['Mobileno'];
+        $designation = $_POST['Designation'];
 
-        $query = mysqli_query($con, "insert into tblstaff(Name,Emailid,Mobileno,Designation ) values('$name','$email','$mobile','$designation'");
+        $query = mysqli_query($con, "INSERT INTO `tblstaff`(`Name`, `Emailid`, `Mobileno`, `Designation`) VALUES ('$name','$email','$mobile','$designation')");
         if ($query) {
-            echo "<script>alert('Info added successfully.');</script>";
-            echo "<script>window.location.href='add-staff.php'</script>";
+            echo "<script>alert('Staff Record Added successfully.');</script>";
+            echo "<script>window.location.href='manage-staff.php'</script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again.');</script>";
             echo "<script>window.location.href='add-staff.php'</script>";
@@ -71,7 +71,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 <div class="container">
                     <!-- Title -->
                     <div class="hk-pg-header">
-                        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Add Staff Info`</h4>
+                        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Add Staff Info</h4>
                     </div>
                     <!-- /Title -->
 
@@ -83,12 +83,11 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <div class="row">
                                     <div class="col-sm">
                                         <form class="needs-validation" method="post" novalidate>
-
-
+                                            
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03"> Staff Name</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Staff Name" name="name" required>
+                                                    <input type="text" name="Name" class="form-control" id="validationCustom03" placeholder="Staff Name" required>
                                                     <div class="invalid-feedback">Please provide a valid staff name.</div>
                                                 </div>
                                             </div>
@@ -96,7 +95,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Email id</label>
-                                                    <input type="email" class="form-control" id="validationCustom03" placeholder="Email id" name="emailid" required>
+                                                    <input type="email" name="Emailid" class="form-control" id="validationCustom03" placeholder="Email id" required>
                                                     <div class="invalid-feedback">Please provide a valid Email id.</div>
                                                 </div>
                                             </div>
@@ -105,7 +104,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03"> Mobile Number</label>
-                                                    <input type="mobile" class="form-control" id="validationCustom03" placeholder="Mobile Number" name="mobile" required>
+                                                    <input type="text" name="Mobileno"  class="form-control" id="validationCustom03" placeholder="Mobile Number" required>
                                                     <div class="invalid-feedback">Please provide a valid mobile number.</div>
                                                 </div>
                                             </div>
@@ -114,14 +113,10 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03"> Designation</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Designation" name="designation" required>
+                                                    <input type="text" name="Designation"  class="form-control" id="validationCustom03" placeholder="Designation" required>
                                                     <div class="invalid-feedback">Please provide a valid designationr.</div>
                                                 </div>
                                             </div>
-
-
-
-
 
                                             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                         </form>

@@ -8,22 +8,22 @@ if (strlen($_SESSION['aid'] == 0)) {
     // Add product Code
     if (isset($_POST['submit'])) {
         //Getting Post Values
-        $invoice = $_POST['invoiceno'];
-        $date = $_POST['date'];
-        $cownumber = $_POST['cownumber'];
-        $amount = $_POST['amount'];
-        $name = $_POST['name'];
-        $contact = $_POST['contact'];
-        $email = $_POST['email'];
-        $remarks = $_POST['remarks'];
+        $invoice = $_POST['InvoiceNo'];
+        $date = $_POST['Date'];
+        $cownumber = $_POST['CowNumber'];
+        $amount = $_POST['Amount'];
+        $name = $_POST['Name'];
+        $contact = $_POST['Contact'];
+        $email = $_POST['Email'];
+        $remarks = $_POST['Remarks'];
 
-        $query = mysqli_query($con, "insert into tblcwsale(InvoiceNo,Date,CowNumber,Amount,Name,Contact,Email,Remarks) values('$invoice','$date','$cownumber','$amount','$name','$contact','$email','$remarks')");
+        $query = mysqli_query($con, "INSERT INTO `tblcwsale`(`InvoiceNo`, `Date`, `CowNumber`, `Amount`, `Name`, `Contact`, `Email`, `Remarks`) VALUES('$invoice','$date','$cownumber','$amount','$name','$contact','$email','$remarks')");
         if ($query) {
-            echo "<script>alert('Info added successfully.');</script>";
-            echo "<script>window.location.href='add-cowsale.php'</script>";
+            echo "<script>alert('Milk Sales Collection Added successfully.');</script>";
+            echo "<script>window.location.href='manage-cowsale.php'</script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again.');</script>";
-            echo "<script>window.location.href='add-cowsale.php'</script>";
+            echo "<script>window.location.href='add-cwsale.php'</script>";
         }
     }
 
@@ -90,53 +90,65 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Invoice No</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Invoice No" name="invoiceno" required>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="InvoiceNo" name="InvoiceNo" required>
                                                     <div class="invalid-feedback">Please provide a valid number.</div>
                                                 </div>
                                             </div>
 
-
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Date</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Date" name="date" required>
+                                                    <input type="date" class="form-control" id="validationCustom03" placeholder="Date" name="Date" required>
                                                     <div class="invalid-feedback">Please provide a valid date.</div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Cow Number</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Cow Number" name="cownumber" required>
-                                                    <div class="invalid-feedback">Please provide a cow number.</div>
+                                                    <label for="validationCustom03">Cow number</label>
+                                                    <?php 
+                                                        $query ="SELECT Cownumber FROM tblcow";
+                                                        $result = $con->query($query);
+                                                        if($result->num_rows> 0){
+                                                            $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                                        }
+                                                    ?>
+                                                    <select name="CowNumber" class="form-control">
+                                                    <?php 
+                                                        foreach ($options as $option) {
+                                                    ?>
+                                                        <option value="<?php echo $option['Cownumber']; ?>"><?php echo $option['Cownumber']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                    <div class="invalid-feedback">Cow Number</div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Amount</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Amount" name="amount" required>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Amount" name="Amount" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Customer Name</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Customer Name" name="name" required>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Customer Name" name="Name" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Customer Contact</label>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Customer Contact" name="contact" required>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Customer Contact" name="Contact" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Customer Email</label>
-                                                    <input type="email" class="form-control" id="validationCustom03" placeholder="Customer Email" name="email" required>
+                                                    <input type="email" class="form-control" id="validationCustom03" placeholder="Customer Email" name="Email" required>
                                                     <div class="invalid-feedback">Please provide a valid emailid.</div>
                                                 </div>
                                             </div>
@@ -144,13 +156,9 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Remarks</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Remarks" name="remarks" required>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Remarks" name="Remarks" required>
                                                 </div>
                                             </div>
-
-
-
-
 
                                             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                         </form>

@@ -6,18 +6,28 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:logout.php');
 } else {
     // Add company Code
-    if (isset($_POST['update'])) {
-        $adminid = $_SESSION['aid'];
-        //Getting Post Values
-        $adminname = $_POST['adminname'];
-        $emailid = $_POST['emailid'];
-        $mobileno = $_POST['mobilenumber'];
-        $query = mysqli_query($con, "update tblstaff set StaffName='$staffname',Email='$emailid', MobileNumber='$mobileno', Designation = '$designation', UserName = '$username', where id='$adminid'");
-        if ($query) {
-            echo "<script>alert('Admin details updated successfully.');</script>";
-            echo "<script>window.location.href='profile.php'</script>";
-        }
-    }
+    if(isset($_POST['update'])){
+
+        $update =  "UPDATE `tblstaff` SET `Name`='".$_POST['Name']."',`Emailid`='".$_POST['Emailid']."',`Mobileno`='".$_POST['Mobileno']."',`Designation`='".$_POST['Designation']."' WHERE `id`='".$_REQUEST['id']."'";
+		
+		mysqli_query($con, $update);
+		
+		$msg="Sucessfully Updated a Staff Record !!";
+				
+		echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-staff.php';</script>";
+	
+		mysqli_close($con);
+	}
+
+    if($_REQUEST['id']){
+
+		$datashow="SELECT * FROM `tblstaff` WHERE id=".$_REQUEST['id'];
+
+		$resrow=mysqli_query($con,$datashow);
+
+		$data=mysqli_fetch_array($resrow);		
+
+	}
 
 ?>
     <!DOCTYPE html>
@@ -67,7 +77,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 <div class="container">
                     <!-- Title -->
                     <div class="hk-pg-header">
-                        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Update Admin Profile</h4>
+                        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Update Staff Member</h4>
                     </div>
                     <!-- /Title -->
 
@@ -79,31 +89,11 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <div class="row">
                                     <div class="col-sm">
                                         <form class="needs-validation" method="post" novalidate>
-                                            <?php
-                                            //Getting admin name
-                                            $adminid = $_SESSION['aid'];
-                                            $query = mysqli_query($con, "select * from tblstaff where id='$adminid'");
-                                            while ($row = mysqli_fetch_array($query)) {
-                                            ?>
-
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-10">
-                                                        <label for="validationCustom03"> Reg. Date</label>
-                                                        <?php echo $row['AdminRegdate']; ?>
-                                                    </div>
-                                                </div>
-                                                <?php if ($row['UpdationDate'] != "") { ?>
-                                                    <div class="form-row">
-                                                        <div class="col-md-6 mb-10">
-                                                            <label for="validationCustom03"> Last Updation Date</label>
-                                                            <?php echo $row['UpdationDate']; ?>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
+                                        
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03"> Staff Name</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['StaffName']; ?>" name="staffname" required>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $data['Name']; ?>" name="Name" required>
                                                         <div class="invalid-feedback">Please provide a valid staff name.</div>
                                                     </div>
                                                 </div>
@@ -111,7 +101,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Email id</label>
-                                                        <input type="email" class="form-control" id="validationCustom03" value="<?php echo $row['Email']; ?>" name="emailid" required>
+                                                        <input type="email" class="form-control" id="validationCustom03" value="<?php echo $data['Emailid']; ?>" name="Emailid" required>
                                                         <div class="invalid-feedback">Please provide a valid Email id.</div>
                                                     </div>
                                                 </div>
@@ -120,7 +110,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03"> Mobile Number</label>
-                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['MobileNumber']; ?>" name="mobilenumber" required>
+                                                        <input type="tel" class="form-control" id="validationCustom03" value="<?php echo $data['Mobileno']; ?>" name="Mobileno" required>
                                                         <div class="invalid-feedback">Please provide a valid mobile number.</div>
                                                     </div>
                                                 </div>
@@ -129,31 +119,10 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03"> Designation</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['Designation']; ?>" name="designation" required>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $data['Designation']; ?>" name="Designation" required>
                                                         <div class="invalid-feedback">Please provide a valid designationr.</div>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-10">
-                                                        <label for="validationCustom03"> Username</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['UserName']; ?>" name="username" readonly>
-                                                        <div class="invalid-feedback">Please provide a valid userid.</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-10">
-                                                        <label for="validationCustom03"> Password</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['Password']; ?>" name="password" required>
-                                                        <div class="invalid-feedback">Please provide a valid password.</div>
-                                                    </div>
-                                                </div>
-
-
-
-
-                                            <?php } ?>
 
                                             <button class="btn btn-primary" type="submit" name="update">Update</button>
                                         </form>

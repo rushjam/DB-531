@@ -74,19 +74,11 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <div class="row">
                                     <div class="col-sm">
                                         <form class="needs-validation" method="post" novalidate>
-                                            <?php
-                                            $cid = substr(base64_decode($_GET['pid']), 0, -5);
-                                            $ret = mysqli_query($con, "select * from mcoll where ID='$cid'");
-                                            $cnt = 1;
-                                            while ($row = mysqli_fetch_array($ret)) {
-                                            ?>
-
-
-
+                                           
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Cow Number</label>
-                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['Cow Number']; ?>" name="cownumber" required>
+                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['CowNumber']; ?>" name="cownumber" required>
                                                         <div class="invalid-feedback">Please provide a cow number.</div>
                                                     </div>
                                                 </div>
@@ -105,7 +97,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Pound</label>
-                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['Pound']; ?>" name="pound" required>
+                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['Liter']; ?>" name="pound" required>
                                                         <div class="invalid-feedback">Please provide a valid number.</div>
                                                     </div>
                                                 </div>
@@ -113,21 +105,11 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Price per pound</label>
-                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['Price per pound']; ?>" name="priceperpound" required>
+                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['priceperpound']; ?>" name="priceperpound" required>
                                                         <div class="invalid-feedback">Please provide a valid price.</div>
                                                     </div>
                                                 </div>
 
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-10">
-                                                        <label for="validationCustom03">Total</label>
-                                                        <input type="number" class="form-control" id="validationCustom03" value="<?php echo $row['Total']; ?>" name="total" required>
-                                                    </div>
-                                                </div>
-
-
-
-                                            <?php } ?>
                                             <button class="btn btn-primary" type="submit" name="update">Update</button>
                                         </form>
                                     </div>

@@ -6,11 +6,18 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:logout.php');
 } else {
     // Code for deletion   
-    if (isset($_GET['del'])) {
-        $cmpid = substr(base64_decode($_GET['del']), 0, -5);
-        $query = mysqli_query($con, "delete from tblfeed where id='$cmpid'");
-        echo "<script>alert('Feed record deleted.');</script>";
-        echo "<script>window.location.href='manage-cow.php'</script>";
+  
+    if(isset($_REQUEST['id'])) {
+
+        $query1 = "DELETE FROM `tblfeed` WHERE id=".$_REQUEST['id'];
+
+        mysqli_query($con, $query1);
+		
+		$msg="Cow Vaccine Record Successfully Deleted !!";
+				
+		echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-feed.php';</script>";
+	
+		mysqli_close($con);
     }
 
 ?>
@@ -75,13 +82,13 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Date</th>
                                                         <th>CowNumber</th>
+                                                        <th>Date</th>
                                                         <th>Remarks</th>
                                                         <th>FoodItem</th>
                                                         <th>Quantity</th>
                                                         <th>Feeding Time</th>
-
+                                                        <th>Action</th>
 
                                                     </tr>
                                                 </thead>
@@ -94,15 +101,15 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $cnt; ?></td>
-                                                            <td><?php echo $row['Date']; ?></td>
                                                             <td><?php echo $row['CowNumber']; ?></td>
+                                                            <td><?php echo $row['Date']; ?></td>
                                                             <td><?php echo $row['Remarks']; ?></td>
                                                             <td><?php echo $row['FoodItem']; ?></td>
                                                             <td><?php echo $row['Quantity']; ?></td>
-                                                            <td><?php echo $row['FeedingTime']; ?></td>
+                                                            <td><?php print date("h:i A", strtotime($row['FeedingTime'])); ?></td>
                                                             <td>
-                                                                <a href="edit-feed.php?pid=<?php echo base64_encode($row['id'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
-                                                                <a href="manage-feed.php?del=<?php echo base64_encode($row['id'] . $rno); ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
+                                                                <a href="edit-feed.php?id=<?php print $row['id']; ?>" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
+                                                                <a href="manage-feed.php?id=<?php print $row['id']; ?>" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
                                                             </td>
                                                         </tr>
                                                     <?php

@@ -127,13 +127,13 @@
                                </li>
                            </ul>
                        </li>
-
+<!-- 
                        <li class="nav-item">
                            <a class="nav-link" href="search-cow.php">
                                <i class="glyphicon glyphicon-search"></i>
                                <span class="nav-link-text">Search Cow</span>
                            </a>
-                       </li>
+                       </li> -->
                    </ul>
                    <hr class="nav-separator">
                </div>
