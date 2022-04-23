@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl  fixed-top hk-navbar h-[90px] custom-nav left-[300px]">
-    <ul class="navbar-nav hk-navbar-content">
+    <ul class="navbar-nav hk-navbar-content navbar-tital">
         <li class="nav-item dropdown dropdown-authentication">
             <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media">
