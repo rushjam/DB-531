@@ -51,7 +51,6 @@ if (strlen($_SESSION['aid'] == 0)) {
             <!-- /Vertical Nav -->
 
 
-
             <!-- Main Content -->
             <div class="hk-pg-wrapper ml-0">
                 <!-- Breadcrumb -->
@@ -74,7 +73,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
-                            <section class="hk-sec-wrapper">
+                            <section class="hk-sec-wrapper rounded-xl">
 
                                 <div class="row">
                                     <div class="col-sm">

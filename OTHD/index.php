@@ -54,16 +54,17 @@ if (isset($_POST['login'])) {
                         <div class="auth-form-wrap py-xl-0 py-50">
                             <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
                                 <form method="post">
-                                    <h1 class="font-30 font-black mb-20 text-black">Login</h1>
-                                    <p class="font-5 font-100 mb-20">See your support and get consulting support!</p>
+                                    <h1 class="font-40 font-black mb-20 text-[#6e00ff]">Login</h1>
+                                    <p class="font-20 text-[#acacac] text-black">Welcome Back 😊</p>
+                                    <p class="font-2 text-[#acacac] font-100 mb-50 text-black">We are here to help! Please enter your credential to continue.</p>
 
                                     <div class="form-group">
-                                        <input class="form-control new-b new-br border-solid h-14 font-bold" placeholder="Username" type="text" name="username" required="true">
+                                        <input class="form-control new-br border-solid h-14 font-bold" placeholder="Username" type="text" name="username" required="true">
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="border-solid form-control new-b new-br h-14 font-bold" placeholder="Password" type="password" name="password" required="true">
+                                            <input class="border-solid form-control new-br h-14 font-bold" placeholder="Password" type="password" name="password" required="true">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
                                             </div>
@@ -79,18 +80,23 @@ if (isset($_POST['login'])) {
                     </div>
                     <div class="col-xl-5 pa-0">
                         <div id="owl_demo_1" class="owl-carousel dots-on-item owl-theme">
-                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(dist/img/banner2.png);">
+                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(dist/img/banner2.jpg);">
                                 <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                                     <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
-
                                     </div>
                                 </div>
                                 <div class="bg-overlay bg-trans-dark-50"></div>
                             </div>
-                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(dist/img/banner1.png);">
+                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(dist/img/banner1.jpg);">
                                 <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                                     <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
-
+                                    </div>
+                                </div>
+                                <div class="bg-overlay bg-trans-dark-50"></div>
+                            </div>
+                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(dist/img/banner3.jpg);">
+                                <div class="auth-cover-info py-xl-0 pt-100 pb-50">
+                                    <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
                                     </div>
                                 </div>
                                 <div class="bg-overlay bg-trans-dark-50"></div>

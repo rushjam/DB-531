@@ -20711,9 +20711,9 @@ width: 200px !important;
 .sidebar-bg > li:hover {
   background-color: #6e00ff !important;
   border-radius: 0.75rem !important;
-
-  
 }
+
+
 .sidebar-bg > li a {
   color: black !important;
 }
@@ -20797,6 +20797,7 @@ button:hover {
   width: 25px;
   margin-right: 10px;
 }
+
 .sidebar1 {
   background: url('../img/sidebar1.png');
   background-position: center center;
@@ -20835,4 +20836,145 @@ button:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.sidebar-bg > li:hover .sidebar1 {
+  background: url('../img/sidebarw1.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-bg > li:hover .sidebar2 {
+  background: url('../img/sidebarw2.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-bg > li:hover .sidebar3 {
+  background: url('../img/sidebarw3.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-bg > li:hover .sidebar4 {
+  background: url('../img/sidebarw4.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-bg > li:hover .sidebar5 {
+  background: url('../img/sidebarw5.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-bg > li:hover .sidebar6 {
+  background: url('../img/sidebarw6.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+tbody tr:hover {
+  background-color: #6e00ffde  !important;
+} 
+
+tbody tr td:first-child {
+  border-top-left-radius: 0.75rem !important;
+  border-bottom-left-radius: 0.75rem !important;
+}
+
+tbody tr td:last-child {
+  border-top-right-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+}
+
+tbody tr td i {
+  color: #6e00ff ;
+}
+
+tbody tr:hover td i {
+  color: white !important;
+}
+
+.pg-title-icon svg {
+  color: #6e00ff;
+}
+
+.icon-trash {
+color: red !important;
+}
+
+tbody tr td {
+  font-weight: 400 !important;
+}
+
+thead tr th {
+  font-weight: 800 !important;
+}
+
+.hk-pg-header a button {
+  height: 60px;
+  width: 200px;
+}
+
+.p1 {
+  background: url('../img/p1.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.p2 {
+  background: url('../img/p2.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.p3 {
+  background: url('../img/p3.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.p4 {
+  background: url('../img/p4.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.p5 {
+  background: url('../img/p5.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.p6 {
+  background: url('../img/p6.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hk-sec-wrapper {
+  box-shadow: 0 0 28px rgb(0 0 0 / 7%);
+}
+
+.owl-dots > button {
+  width: inherit !important;
+  height: inherit !important;
+}
+
+.owl-dots {
+  display: none !important;
+}
+
+/* navabr tital */
+
+.navbar-tital {
+  background-color: white;
 }

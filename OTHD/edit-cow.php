@@ -41,6 +41,8 @@ if (strlen($_SESSION['aid'] == 0)) {
         <link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
         <link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
         <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+        <script src="https://cdn.tailwindcss.com"></script>
+
     </head>
 
     <body>
@@ -77,12 +79,10 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
-                            <section class="hk-sec-wrapper">
+                            <section class="hk-sec-wrapper rounded-xl">
 
                                 <div class="row">
                                     <div class="col-sm">
-                                        <div class="asdasdasdasddasdasdas">
-                                        <span class="d-block display-4 text-dark mb-5">
                                         <form class="needs-validation" method="post" novalidate>
                                             
                                                 <div class="form-row">
@@ -96,10 +96,29 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03">Gender</label>
-                                                        <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Male" <?php if($data[1] == "Male") echo 'checked="checked"'; ?> required>
+
+                                                        <div class="overflow-hidden box-border m-0 flex mbc">
+                                                        <div class="flex items-center mr-12">
+                                                            <input type="radio" class="form-control w-[22px] mr-4 accent-[#6e00ff]" id="validationCustom03" name="gender" value="Male" <?php if($data[1] == "Male") echo 'checked="checked"'; ?> required>
+                                                            <label for="Male mb-0">Male</label>
+                                                        </div>
+                                                        <div class="flex items-center  mr-12">
+
+                                                            <input type="radio" class="form-control  w-[22px] mr-4 accent-[#6e00ff]" id="validationCustom03" name="gender" value="Female"  <?php if($data[1] == "Female") echo 'checked="checked"'; ?>  required>
+                                                            <label for="Female mb-0">Female</label>
+                                                        </div>
+                                                        <div class="flex items-center mr-12">
+
+                                                            <input type="radio" class="form-control  w-[22px] mr-4 accent-[#6e00ff]" id="validationCustom03" name="gender" value="Other"  <?php if($data[1] == "Other") echo 'checked="checked"'; ?> required>
+                                                            <label for="Other mb-0">Other</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                        <!-- <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Male" <?php if($data[1] == "Male") echo 'checked="checked"'; ?> required>
                                                         <label for="Male">Male</label>
                                                         <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Female" <?php if($data[1] == "Female") echo 'checked="checked"'; ?> required><label for="Female">Female</label>
-                                                        <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Other" <?php if($data[1] == "Other") echo 'checked="checked"'; ?> required><label for="Other">Other</label>
+                                                        <input type="radio" class="form-control" id="validationCustom03" name="gender" value="Other" <?php if($data[1] == "Other") echo 'checked="checked"'; ?> required><label for="Other">Other</label> -->
 
 
                                                     </div>
