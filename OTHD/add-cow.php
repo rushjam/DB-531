@@ -47,7 +47,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
         <!-- HK Wrapper -->
-        <div class="hk-wrapper hk-vertical-nav ml-[300px]">
+        <div class="hk-wrapper hk-vertical-nav ml-[290px]">
 
             <!-- Top Navbar -->
             <?php include_once('includes/navbar.php');
@@ -83,7 +83,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
-                            <section class="hk-sec-wrapper">
+                            <section class="hk-sec-wrapper rounded-xl">
 
                                 <div class="row">
                                     <div class="col-sm">

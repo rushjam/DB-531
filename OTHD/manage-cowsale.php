@@ -60,13 +60,14 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <!-- Title -->
                     <div class="hk-pg-header">
                         <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>Manage Cow Sales Information</h4>
+                        <a href="add-cwsale.php"><button class="btn btn-danger ">Add Cow Sale</button></a>
                     </div>
                     <!-- /Title -->
 
                     <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
-                            <section class="hk-sec-wrapper">
+                            <section class="hk-sec-wrapper rounded-xl">
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="table-wrap">

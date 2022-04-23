@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <p>Developed By<a class="text-dark">Rushik Ramani, Hemil Prajapati</a> ©2022</p>
+                <p>Made with ❤️<a class="text-dark">by Rushik Ramani & Hemil Prajapati</a></p>
             </div>
         </div>
     </footer>
