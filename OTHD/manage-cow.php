@@ -6,24 +6,24 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:logout.php');
 } else {
     // Code for deletion   
-    
 
-    if(isset($_REQUEST['Cownumber'])) {
 
-        $query1 = "DELETE FROM `tblcow` WHERE Cownumber=".$_REQUEST['Cownumber'];
+    if (isset($_REQUEST['Cownumber'])) {
+
+        $query1 = "DELETE FROM `tblcow` WHERE Cownumber=" . $_REQUEST['Cownumber'];
 
         mysqli_query($con, $query1);
-		
-		$msg="Cow Record Successfully Deleted !!";
-				
-		echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-cow.php';</script>";
-	
-		mysqli_close($con);
+
+        $msg = "Cow Record Successfully Deleted !!";
+
+        echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-cow.php';</script>";
+
+        mysqli_close($con);
     }
 
 ?>
     <!DOCTYPE html>
-    <html lang="en"> 
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8" />
@@ -36,6 +36,8 @@ if (strlen($_SESSION['aid'] == 0)) {
         <link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
         <link href="dist/css/style.css" rel="stylesheet" type="text/css">
         <script src="https://cdn.tailwindcss.com"></script>
+
+
 
     </head>
 
@@ -73,13 +75,13 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <!-- /Title -->
 
                     <!-- Row -->
-                    <div class="row">
+                    <div class="row" id="invoice">
                         <div class="col-xl-12">
                             <section class="hk-sec-wrapper rounded-xl">
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="table-wrap">
-                                            <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                            <table id="example" class="table table-hover w-100 display pb-30">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -164,6 +166,18 @@ if (strlen($_SESSION['aid'] == 0)) {
         <script src="vendors/jquery-toggles/toggles.min.js"></script>
         <script src="dist/js/toggle-data.js"></script>
         <script src="dist/js/init.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js" integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        </script>
     </body>
 
     </html>

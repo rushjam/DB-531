@@ -2,17 +2,19 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if (isset($_POST['login'])) {
-    $adminuser = $_POST['username'];
-    $password = md5($_POST['password']);
-    $query = mysqli_query($con, "select ID from tbladmin where  UserName='$adminuser' && Password='$password' ");
-    $ret = mysqli_fetch_array($query);
-    if ($ret > 0) {
-        $_SESSION['aid'] = $ret['ID'];
-        header('location:dashboard.php');
-    } else {
-        echo "<script>alert('Incorrect Username or Password. Please try again.');</script>";
+if (isset($_POST['submit'])) {
+    //Getting Post Values
+    $name = $_POST['UserName'];
+    $email = $_POST['Email'];
+    $mobile = md5($_POST['Password']);
+
+    $query = mysqli_query($con, "INSERT INTO `tbladmin`(`UserName`, `Email`, `Password`) VALUES ('$name','$email','$mobile')");
+    if ($query) {
+        echo "<script>alert('User Added successfully.');</script>";
         echo "<script>window.location.href='index.php'</script>";
+    } else {
+        echo "<script>alert('Something went wrong. Please try again.');</script>";
+        echo "<script>window.location.href='signup.php'</script>";
     }
 }
 ?>
@@ -55,27 +57,31 @@ if (isset($_POST['login'])) {
                             <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
                                 <form method="post">
                                     <div class="flex mb-60 items-center">
-                                        <h1 class="font-40 font-black  text-[#6e00ff]">Login 
+                                        <h1 class="font-40 font-black  text-[#6e00ff]">Sign Up 
                                         </h1><div class="flash-bg"></div>
                                     </div>
-                                    <p class="font-20 text-[#acacac] text-black mb-20">Welcome Back 😊</p>
+                                    <p class="font-20 text-[#acacac] text-black mb-20">Create an Account 😊</p>
                                     <p class="font-2 text-[#acacac] font-100 mb-50 text-black">We are here to help! Please enter your credential to continue.</p>
 
                                     <div class="form-group">
-                                        <input class="form-control new-br border-solid h-14 font-bold" placeholder="Username" type="text" name="username" required="true">
+                                        <input class="form-control new-br border-solid h-14 font-bold" placeholder="Username" type="text" name="UserName" required="true">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control new-br border-solid h-14 font-bold" placeholder="Email" type="email" name="Email" required="true">
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="border-solid form-control new-br h-14 font-bold" placeholder="Password" type="password" name="password" required="true">
+                                            <input class="border-solid form-control new-br h-14 font-bold" placeholder="Password" type="password" name="Password" required="true">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button class="btn new-br btn-block bg-[#6e00ff] h-14 text-white font-bold" type="submit" name="login">Login</button>
-                                    <a href="signup.php"><p class="font-14 text-center mt-15 text-black font-black">Don't have an account? Create an Account</p></a>
+                                    <button class="btn new-br btn-block bg-[#6e00ff] h-14 text-white font-bold" type="submit" name="submit">Signup</button>
+                                    <a href="index.php"><p class="font-14 text-center mt-15 text-black font-black">Already having Account?</p></a>
 
                                 </form>
                             </div>

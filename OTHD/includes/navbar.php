@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-xl  fixed-top hk-navbar h-[90px] custom-nav left-[300px]">
+<nav class="navbar navbar-expand-xl  fixed-top hk-navbar h-[70px] shadow-lg custom-nav left-[300px] bg-[#6e00ff] text-white">
+    <div class="dashboard-c pl-[30px]">
+        <a href="dashboard.php" class="dashboard-link"><p>Dashboard</p></a>
+    </div>
     <ul class="navbar-nav hk-navbar-content navbar-tital">
         <li class="nav-item dropdown dropdown-authentication">
             <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,7 +19,7 @@
                     $row = mysqli_fetch_array($query);
                     ?>
                     <div class="media-body">
-                        <span><?php echo $row['AdminName']; ?><i class="zmdi zmdi-chevron-down"></i></span>
+                        <span class="bg-whitec"><?php echo $row['AdminName']; ?><i class="zmdi zmdi-chevron-down"></i></span>
                     </div>
                 </div>
             </a>

@@ -6,18 +6,18 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:logout.php');
 } else {
     // Code for deletion   
-  
-    if(isset($_REQUEST['id'])) {
 
-        $query1 = "DELETE FROM `tblfeed` WHERE id=".$_REQUEST['id'];
+    if (isset($_REQUEST['id'])) {
+
+        $query1 = "DELETE FROM `tblfeed` WHERE id=" . $_REQUEST['id'];
 
         mysqli_query($con, $query1);
-		
-		$msg="Cow Vaccine Record Successfully Deleted !!";
-				
-		echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-feed.php';</script>";
-	
-		mysqli_close($con);
+
+        $msg = "Cow Vaccine Record Successfully Deleted !!";
+
+        echo "<script type='text/JavaScript'>alert ('$msg');window.location.href='manage-feed.php';</script>";
+
+        mysqli_close($con);
     }
 
 ?>
@@ -78,7 +78,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="table-wrap">
-                                            <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                            <table id="example" class="table table-hover w-100 display pb-30">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -160,6 +160,17 @@ if (strlen($_SESSION['aid'] == 0)) {
         <script src="vendors/jquery-toggles/toggles.min.js"></script>
         <script src="dist/js/toggle-data.js"></script>
         <script src="dist/js/init.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        </script>
     </body>
 
     </html>

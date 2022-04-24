@@ -20725,6 +20725,14 @@ width: 200px !important;
 
 .custom-nav {
   box-shadow: none !important;
+  width: 500px !important;
+  left: 63% !important;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.dashboard-link > p:hover {
+  color: white !important;
 }
 
 .hm-tital {
@@ -20732,7 +20740,7 @@ width: 200px !important;
   background: #6e00ff;
   width: 240px;
   border-radius: 0.75rem;
-  box-shadow:  0 0 28px rgb(0 0 0 / 7%);
+  box-shadow:  0 0 28px rgb(0 0 0 / 7%) !important;
 }
 
 .hm-tital h1 {
@@ -20977,5 +20985,42 @@ thead tr th {
 /* navabr tital */
 
 .navbar-tital {
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  padding-right: 40px;
+}
+
+.bg-whitec:hover {
+  color: white !important;
+}
+
+/* index */
+
+.flash-bg {
+  background-image: url('../img/login-flash.png');
+  height: 34px;
+  width: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 4px;
+  margin-left: 6px;
+}
+
+.pagination .page-item.active .page-link{
+  background: #6e00ff !important;
+  border-color: #6e00ff !important;
+}
+
+.dashborad-bs {
+  box-shadow:  0 0 28px rgb(0 0 0 / 7%) !important;
+}
+
+.dt-buttons button {
+  margin: 10px;
+  width: 60px;
+  height: 30px;
+  font-size: 12px;
+}
+
+#example_filter label {
+  display: none !important;
 }

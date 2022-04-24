@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 06:41 PM
+-- Host: localhost
+-- Generation Time: Apr 23, 2022 at 07:23 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,7 +52,6 @@ INSERT INTO `tbladmin` (`ID`, `AdminName`, `UserName`, `MobileNumber`, `Email`, 
 --
 
 CREATE TABLE `tblcow` (
-  `id` int(11) NOT NULL,
   `Cownumber` int(11) NOT NULL,
   `Gender` tinytext NOT NULL,
   `Breed` tinytext NOT NULL,
@@ -62,6 +61,13 @@ CREATE TABLE `tblcow` (
   `DateRemoved` date NOT NULL,
   `Cause` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblcow`
+--
+
+INSERT INTO `tblcow` (`Cownumber`, `Gender`, `Breed`, `DateofBirth`, `DateAcquired`, `Status`, `DateRemoved`, `Cause`) VALUES
+(1, 'Male', 'Asian', '2022-04-22', '2022-04-22', 'Online', '2022-04-22', 'Sold');
 
 -- --------------------------------------------------------
 
@@ -82,15 +88,22 @@ CREATE TABLE `tblcowbreed` (
 
 CREATE TABLE `tblcwsale` (
   `id` int(11) NOT NULL,
-  `InvoiceNo` int(11) NOT NULL,
-  `Date` int(11) NOT NULL,
-  `CowNumber` int(100) NOT NULL,
-  `Amount` int(100) NOT NULL,
-  `Name` text NOT NULL,
-  `Contact` int(11) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Remarks` text NOT NULL
+  `InvoiceNo` varchar(255) NOT NULL,
+  `Date` date NOT NULL,
+  `CowNumber` int(11) NOT NULL,
+  `Amount` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Contact` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblcwsale`
+--
+
+INSERT INTO `tblcwsale` (`id`, `InvoiceNo`, `Date`, `CowNumber`, `Amount`, `Name`, `Contact`, `Email`, `Remarks`) VALUES
+(2, '124124', '2022-04-23', 1, '123', '123sf', '213faf', 'fsf@nasn.com', 'sdvdv');
 
 -- --------------------------------------------------------
 
@@ -131,11 +144,21 @@ CREATE TABLE `tblfeedsupplier` (
 
 CREATE TABLE `tblmcoll` (
   `id` int(11) NOT NULL,
-  `CollectionID` int(11) NOT NULL,
   `CowNumber` int(11) NOT NULL,
   `Date` date NOT NULL,
-  `Liter` int(100) NOT NULL
+  `Liter` varchar(255) NOT NULL,
+  `priceperpound` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblmcoll`
+--
+
+INSERT INTO `tblmcoll` (`id`, `CowNumber`, `Date`, `Liter`, `priceperpound`) VALUES
+(2, 1, '2022-04-20', '3', '10'),
+(3, 1, '2022-04-21', '3', '12'),
+(4, 1, '2022-04-22', '3', '25'),
+(5, 1, '2022-04-23', '1', '12');
 
 -- --------------------------------------------------------
 
@@ -145,12 +168,21 @@ CREATE TABLE `tblmcoll` (
 
 CREATE TABLE `tblmsale` (
   `id` int(11) NOT NULL,
-  `Name` text NOT NULL,
+  `CowNumber` int(11) NOT NULL,
   `Date` date NOT NULL,
-  `Liter` int(11) NOT NULL,
-  `Priceperliter` int(11) NOT NULL,
-  `Total` int(11) NOT NULL
+  `Liter` varchar(255) NOT NULL,
+  `priceperpound` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblmsale`
+--
+
+INSERT INTO `tblmsale` (`id`, `CowNumber`, `Date`, `Liter`, `priceperpound`) VALUES
+(2, 1, '2022-04-24', '2', '12'),
+(3, 1, '2022-04-22', '4', '12'),
+(4, 1, '2022-04-21', '2', '20'),
+(5, 1, '2022-04-23', '3', '16');
 
 -- --------------------------------------------------------
 
@@ -160,21 +192,20 @@ CREATE TABLE `tblmsale` (
 
 CREATE TABLE `tblstaff` (
   `id` int(11) NOT NULL,
-  `Name` text NOT NULL,
-  `Emailid` varchar(70) NOT NULL,
-  `Mobileno` int(11) NOT NULL,
-  `Designation` text NOT NULL,
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(10) NOT NULL
+  `Name` varchar(255) NOT NULL,
+  `Emailid` varchar(255) NOT NULL,
+  `Mobileno` varchar(255) NOT NULL,
+  `Designation` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblstaff`
 --
 
-INSERT INTO `tblstaff` (`id`, `Name`, `Emailid`, `Mobileno`, `Designation`, `Username`, `Password`) VALUES
-(1, 'aa', 't@gmail.com', 2147483647, 'senior', '', 'admin'),
-(2, 'trisha', 't@gmail.com', 1234567890, 'senior', '', 'password');
+INSERT INTO `tblstaff` (`id`, `Name`, `Emailid`, `Mobileno`, `Designation`) VALUES
+(1, 'aa', 't@gmail.com', '2147483647', 'senior'),
+(2, 'trisha', 't@gmail.com', '1234567890', 'senior'),
+(5, 'Kairav', 'kairav@gmail.com', '4089048575', 'Manager');
 
 -- --------------------------------------------------------
 
@@ -194,7 +225,7 @@ CREATE TABLE `tblvaccine` (
 --
 
 INSERT INTO `tblvaccine` (`id`, `CowNumber`, `VaccineDate`, `Remarks`) VALUES
-(1, 1, '2021-08-14', 'Hep-B');
+(6, 1, '2022-04-22', 'Covid-19');
 
 -- --------------------------------------------------------
 
@@ -218,56 +249,61 @@ CREATE TABLE `tblvetdoctor` (
 --
 ALTER TABLE `tbladmin`
   ADD PRIMARY KEY (`ID`);
+
 --
 -- Indexes for table `tblcow`
 --
 ALTER TABLE `tblcow`
-  ADD PRIMARY KEY (`Cownumber`),
---
--- Indexes for table `tblcowbreed`
---
-ALTER TABLE `tblcowbreed`
-  ADD PRIMARY KEY (`BreedID`);
+  ADD PRIMARY KEY (`Cownumber`);
+
 --
 -- Indexes for table `tblcwsale`
 --
 ALTER TABLE `tblcwsale`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblfeed`
 --
 ALTER TABLE `tblfeed`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblfeedsupplier`
 --
 ALTER TABLE `tblfeedsupplier`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblmcoll`
 --
 ALTER TABLE `tblmcoll`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblmsale`
 --
 ALTER TABLE `tblmsale`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblstaff`
 --
 ALTER TABLE `tblstaff`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblvaccine`
 --
 ALTER TABLE `tblvaccine`
   ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `tblvetdoctor`
 --
 ALTER TABLE `tblvetdoctor`
   ADD PRIMARY KEY (`id`);
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -279,28 +315,16 @@ ALTER TABLE `tbladmin`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tblcow`
---
-ALTER TABLE `tblcow`
-  MODIFY `Cownumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tblcowbreed`
---
-ALTER TABLE `tblcowbreed`
-  MODIFY `BreedID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tblcwsale`
 --
 ALTER TABLE `tblcwsale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblfeed`
 --
 ALTER TABLE `tblfeed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblfeedsupplier`
@@ -312,59 +336,31 @@ ALTER TABLE `tblfeedsupplier`
 -- AUTO_INCREMENT for table `tblmcoll`
 --
 ALTER TABLE `tblmcoll`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblmsale`
 --
 ALTER TABLE `tblmsale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblstaff`
 --
 ALTER TABLE `tblstaff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblvaccine`
 --
 ALTER TABLE `tblvaccine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblvetdoctor`
 --
 ALTER TABLE `tblvetdoctor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tblcow`
---
-ALTER TABLE `tblvaccine`
-  ADD CONSTRAINT `fkey` FOREIGN KEY (`Cownumber`) REFERENCES `tblcow` (`id`);
-  ADD CONSTRAINT `f1key` FOREIGN KEY (`VetID`) REFERENCES `tblvetdoctor` (`id`);
-COMMIT;
-ALTER TABLE `tblfeed`
-  ADD CONSTRAINT `fkey` FOREIGN KEY (`Cownumber`) REFERENCES `tblcow` (`id`);
-  ADD CONSTRAINT `f2key` FOREIGN KEY (`SupplierID`) REFERENCES `tblfeedsupplier` (`id`);
-COMMIT;
-ALTER TABLE `tblcowbreed`
-  ADD CONSTRAINT `fkey` FOREIGN KEY (`Cownumber`) REFERENCES `tblcow` (`id`);
-COMMIT;
-ALTER TABLE `tblcowsale`
-  ADD CONSTRAINT `fkey` FOREIGN KEY (`Cownumber`) REFERENCES `tblcow` (`id`);
-COMMIT;
-ALTER TABLE `tblmcoll`
-  ADD CONSTRAINT `fkey` FOREIGN KEY (`Cownumber`) REFERENCES `tblcow` (`id`);
-COMMIT;
-ALTER TABLE `tblmilksale`
-  ADD CONSTRAINT `fkey` FOREIGN KEY (`Cownumber`) REFERENCES `tblcow` (`id`);
-  ADD CONSTRAINT `f3key` FOREIGN KEY (`CollectionID`) REFERENCES `tblmcoll` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
